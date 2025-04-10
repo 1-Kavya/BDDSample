@@ -45,7 +45,7 @@ public class BookSearchStepDef {
 	@Then("Should display crime result page")
 	public void should_display_crime_result_page() {
 		String strURL = driver.getCurrentUrl();
-	      Assert.assertTrue(strURL.contains("croc"));
+	      Assert.assertTrue(strURL.contains("crime"));
 	}
 
 	@After //After is java hook, used to execute method after each scenario
@@ -56,5 +56,6 @@ public class BookSearchStepDef {
 			scenario.attach(img, "image/png", "FailedScenarioImage");
 		}
 	}
+	
 	
 }

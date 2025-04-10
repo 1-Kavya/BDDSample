@@ -1,10 +1,13 @@
 package runners;
 
+import org.testng.annotations.DataProvider;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features = ".//src//test//resources//features//BookSearch.feature", //running the feature
+//		features = ".//src//test//resources//features//BookSearch.feature", //running the particular feature file
+		features = ".//src//test//resources//features//", //running all the feature files in folder
 		glue =  {"stepDefs"},
 		monochrome = true, //readable console output
 		dryRun = false,
@@ -14,11 +17,17 @@ import io.cucumber.testng.CucumberOptions;
 //				"json:target/Reports/JsonReport.json",
 //				"rerun:target/failedScenarios.txt",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
-			
-			}
+			},
+		tags = "@SmokeTest"	
 		)
 
 public class BookSearchRunner extends AbstractTestNGCucumberTests{
+	
+	//Parallel execution
+	@DataProvider(parallel = true)
+	public Object[][] scenarios(){ //inbuilt method
+		return super.scenarios();
+	}
 
 }
 
