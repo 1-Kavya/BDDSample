@@ -1,3 +1,4 @@
+@PhaseTwo
 Feature: Deals CRUD Management
 
 @SmokeTest
